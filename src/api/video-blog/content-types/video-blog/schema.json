@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "video_blogs",
+  "info": {
+    "singularName": "video-blog",
+    "pluralName": "video-blogs",
+    "displayName": "Video Blog",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "section": {
+      "type": "enumeration",
+      "enum": [
+        "soul",
+        "spirit",
+        "tarot"
+      ],
+      "required": true
+    },
+    "video_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "video_blog"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::video-comment.video-comment",
+      "mappedBy": "video_blog"
+    },
+    "likes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::video-like.video-like",
+      "mappedBy": "video_blog"
+    }
+  }
+}

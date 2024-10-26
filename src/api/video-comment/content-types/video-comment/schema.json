@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "video_comments",
+  "info": {
+    "singularName": "video-comment",
+    "pluralName": "video-comments",
+    "displayName": "Video Comment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "video_blog": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::video-blog.video-blog",
+      "inversedBy": "comments"
+    },
+    "text": {
+      "type": "text"
+    },
+    "created": {
+      "type": "datetime"
+    },
+    "likes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::video-comment-like.video-comment-like",
+      "mappedBy": "video_comment"
+    }
+  }
+}

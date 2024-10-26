@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "video_likes",
+  "info": {
+    "singularName": "video-like",
+    "pluralName": "video-likes",
+    "displayName": "Video Like",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "video_likes"
+    },
+    "video_blog": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::video-blog.video-blog",
+      "inversedBy": "likes"
+    }
+  }
+}

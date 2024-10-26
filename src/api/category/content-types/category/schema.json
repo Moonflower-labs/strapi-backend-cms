@@ -18,14 +18,20 @@
     "slug": {
       "type": "uid"
     },
-    "articles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::article.article",
-      "mappedBy": "category"
-    },
     "description": {
       "type": "text"
+    },
+    "video_blog": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::video-blog.video-blog",
+      "inversedBy": "categories"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::post.post",
+      "mappedBy": "categories"
     }
   }
 }

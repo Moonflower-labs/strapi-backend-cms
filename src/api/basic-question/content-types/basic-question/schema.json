@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "basic_questions",
+  "info": {
+    "singularName": "basic-question",
+    "pluralName": "basic-questions",
+    "displayName": "Basic Question"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "media": {
+      "type": "text"
+    },
+    "age_group": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "created": {
+      "type": "datetime"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

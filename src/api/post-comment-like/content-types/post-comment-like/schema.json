@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "post_comment_likes",
+  "info": {
+    "singularName": "post-comment-like",
+    "pluralName": "post-comment-likes",
+    "displayName": "Post Comment Like",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "post_comment_likes"
+    },
+    "post_comment": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::post-comment.post-comment",
+      "inversedBy": "likes"
+    }
+  }
+}

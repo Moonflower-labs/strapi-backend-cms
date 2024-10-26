@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "video_comment_likes",
+  "info": {
+    "singularName": "video-comment-like",
+    "pluralName": "video-comment-likes",
+    "displayName": "Video Comment Like",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "video_comment_likes"
+    },
+    "video_comment": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::video-comment.video-comment",
+      "inversedBy": "likes"
+    }
+  }
+}

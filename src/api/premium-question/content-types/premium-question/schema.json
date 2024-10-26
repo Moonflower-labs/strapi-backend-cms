@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "premium_questions",
+  "info": {
+    "singularName": "premium-question",
+    "pluralName": "premium-questions",
+    "displayName": "Premium Question"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "tarot",
+        "live"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "created": {
+      "type": "datetime"
+    },
+    "info": {
+      "type": "text"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
