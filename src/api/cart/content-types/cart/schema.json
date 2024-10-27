@@ -25,7 +25,7 @@
       "mappedBy": "cart"
     },
     "guest": {
-      "type": "string"
+      "type": "boolean"
     }
   }
 }
