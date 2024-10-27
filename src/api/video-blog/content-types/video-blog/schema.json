@@ -47,6 +47,12 @@
       "relation": "oneToMany",
       "target": "api::video-like.video-like",
       "mappedBy": "video_blog"
+    },
+    "video_favorites": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::video-favorite.video-favorite",
+      "mappedBy": "video_blog"
     }
   }
 }

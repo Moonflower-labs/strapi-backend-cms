@@ -59,6 +59,12 @@
     },
     "average_rating": {
       "type": "decimal"
+    },
+    "post_favorites": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post-favorite.post-favorite",
+      "mappedBy": "post"
     }
   }
 }

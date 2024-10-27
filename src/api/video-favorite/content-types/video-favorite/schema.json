@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "video_favorites",
+  "info": {
+    "singularName": "video-favorite",
+    "pluralName": "video-favorites",
+    "displayName": "Video Favorite",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "video_blog": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::video-blog.video-blog",
+      "inversedBy": "video_favorites"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

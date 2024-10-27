@@ -746,6 +746,40 @@ export interface ApiPostCommentPostComment extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPostFavoritePostFavorite
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'post_favorites';
+  info: {
+    description: '';
+    displayName: 'Post Favorite';
+    pluralName: 'post-favorites';
+    singularName: 'post-favorite';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::post-favorite.post-favorite'
+    > &
+      Schema.Attribute.Private;
+    post: Schema.Attribute.Relation<'manyToOne', 'api::post.post'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface ApiPostLikePostLike extends Struct.CollectionTypeSchema {
   collectionName: 'post_likes';
   info: {
@@ -855,6 +889,10 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::post.post'> &
       Schema.Attribute.Private;
+    post_favorites: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::post-favorite.post-favorite'
+    >;
     post_ratings: Schema.Attribute.Relation<
       'oneToMany',
       'api::post-rating.post-rating'
@@ -1114,6 +1152,10 @@ export interface ApiVideoBlogVideoBlog extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    video_favorites: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::video-favorite.video-favorite'
+    >;
     video_id: Schema.Attribute.String;
   };
 }
@@ -1184,6 +1226,43 @@ export interface ApiVideoCommentVideoComment
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     text: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    video_blog: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::video-blog.video-blog'
+    >;
+  };
+}
+
+export interface ApiVideoFavoriteVideoFavorite
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'video_favorites';
+  info: {
+    description: '';
+    displayName: 'Video Favorite';
+    pluralName: 'video-favorites';
+    singularName: 'video-favorite';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::video-favorite.video-favorite'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1777,6 +1856,7 @@ declare module '@strapi/strapi' {
       'api::plan.plan': ApiPlanPlan;
       'api::post-comment-like.post-comment-like': ApiPostCommentLikePostCommentLike;
       'api::post-comment.post-comment': ApiPostCommentPostComment;
+      'api::post-favorite.post-favorite': ApiPostFavoritePostFavorite;
       'api::post-like.post-like': ApiPostLikePostLike;
       'api::post-rating.post-rating': ApiPostRatingPostRating;
       'api::post.post': ApiPostPost;
@@ -1789,6 +1869,7 @@ declare module '@strapi/strapi' {
       'api::video-blog.video-blog': ApiVideoBlogVideoBlog;
       'api::video-comment-like.video-comment-like': ApiVideoCommentLikeVideoCommentLike;
       'api::video-comment.video-comment': ApiVideoCommentVideoComment;
+      'api::video-favorite.video-favorite': ApiVideoFavoriteVideoFavorite;
       'api::video-like.video-like': ApiVideoLikeVideoLike;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
